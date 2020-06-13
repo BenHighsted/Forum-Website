@@ -1,3 +1,9 @@
 <?php
-    echo "This is where the code for logging in will go (i.e. encrpyting then querying database";
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    echo "Username: ".$username;
+    echo "<br>Password: ".$password;
+
 ?>
