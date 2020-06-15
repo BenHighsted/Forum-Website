@@ -10,13 +10,11 @@
     $database['username'] = "root";
     $database['password'] = "root";
 
-    $link = mysqli_connect($database['host'], $database['username'], $database['password']);
+    $mysqli = new mysqli($database['host'], $database['username'], $database['password'], $database['name']);
 
-    if ($link) {
-        echo "Successfully connected to database: ".$database['name']."<br/>";
-    } else {
-        echo "Failed to connect.";
-        echo "Error: ".mysqli_error();
+    //Checks connection (will only echo on error)
+    if ($mysqli -> connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        exit();
     }
-
 ?>
