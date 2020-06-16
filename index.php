@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 
+<?php
+    include("headers.php");
+?>
+
 <html>
 
     <head>
@@ -8,12 +12,16 @@
     </head>
 
     <body>
-
-        <form action="login.php" method="POST">
-            Username: <input type="text" name="username" placeholder="Username"/> <br/>
-            Password: <input type="password" name="password" placeholder="Password"/> <br/>
-            <input type="submit" name="login" value="Sign In"/>
-        </form>
+        <?php
+            if ($_SESSION["logged-in"]) {
+                $username = $_SESSION['username'];
+                echo "<p> Welcome $username! </p>";
+            } else {
+        ?>
+                <p><a href="login-form.php">Login</a></p>
+        <?php
+            }
+        ?>
 
     </body>
 

@@ -1,5 +1,7 @@
 <?php
+
     include("connect.php");
+    include("headers.php");
 
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -18,7 +20,10 @@
             $row = $result -> fetch_assoc();
 
             if(password_verify($password, $row['password'])){
-                echo "Good work! You're password is correct :)";
+                $_SESSION["logged-in"] = true;
+                $_SESSION["username"] = $username;
+
+                header ("Location:index.php");// redirects user back to index page, which will now be in logged in state
             } else {
                 echo "Incorrect password.";
             }
