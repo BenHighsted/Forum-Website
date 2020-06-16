@@ -2,10 +2,10 @@
 
     /**  */
     function hasInvalidCharacters($text) {
-        if(!preg_match('/^[a-zA-Z0-9]{5,}$/', $text)) { 
-            return true;
+        if(preg_match('/^[A-Z\d]+$/i', $text)) { 
+            return false; //false, does not contain invalid characters
         }
-        return false;
+        return true;
     }
 
 ?>
