@@ -7,38 +7,49 @@
 <html>
 
     <head>
-        <!-- link rel="stylesheet" href="style.css" -->    
+        <link rel="stylesheet" href="style.css">    
         <title>Forum Website Project</title>
     </head>
 
     <body>
-        <?php
-            if ($_SESSION['logged-in']) {
-                $username = $_SESSION['username'];
-                echo "<p> Welcome $username! </p>";
-            } else {
-        ?>
-                <p><a href="login-form.php">Login</a></p>
-        <?php
-            }
-        ?>
+        <header> 
+            <h1> Forum Website </h1>
+            <hr/>
+        </header>
 
-        <?php 
-            if($_SESSION['logged-in']) {
-        ?>
-                <form action="index.php" method="POST">
-                    <input type="submit" value="Logout" name="logout"/>
-                </form>
+        <main>
+            <?php
+                if ($_SESSION['logged-in']) {
+                    $username = $_SESSION['username'];
+                    echo "<p> Welcome $username! </p>";
+                } else {
+            ?>
+                    <p><a href="login-form.php">Login</a></p>
+            <?php
+                }
+            ?>
 
-        <?php 
-            if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['logout'])){
-                $_SESSION['logged-in'] = false; 
-                header("Location: index.php"); 
-            }
-        ?>
-        <?php
-            }
-        ?>
+            <?php 
+                if($_SESSION['logged-in']) {
+            ?>
+                    <form action="index.php" method="POST">
+                        <input type="submit" value="Logout" name="logout" class="logout"/>
+                    </form>
+
+            <?php 
+                    if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['logout'])){
+                        $_SESSION['logged-in'] = false; 
+                        header("Location: index.php"); 
+                    }
+            ?>
+            <?php
+                }
+            ?>
+        </main>
+
+        <footer> 
+                <p> Note: this website was a personal project by Ben Highsted, and has no real purpose. </p>
+        </footer>
 
     </body>
 

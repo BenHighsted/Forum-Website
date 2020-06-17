@@ -1,5 +1,24 @@
 /** Style page for forum website project by Ben Highsted */
 
+h1 {
+    margin: 0px;
+}
+
+header {
+    width: 100%;
+    height: 33px;
+}
+
+footer {
+    width: 100%;
+    height: 33px;
+    font-size: 8px;
+}
+
+header, footer, main {
+    text-align: center;
+}
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -10,7 +29,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
   }
   
-  input[type=submit] {
+  .login {
     width: 100%;
     background-color: blue;
     color: white;
