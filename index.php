@@ -3,6 +3,7 @@
 <?php
     include("headers.php");
     include("connect.php");
+    include("category-functions.php");
 ?>
 
 <html>
@@ -45,12 +46,7 @@
                 }
             ?>
 
-            <?php
-                $select = mysqli_query($mysqli, "SELECT * FROM categories");
-                while($row = mysqli_fetch_assoc($select)) {
-                    echo "<h2>".$row['category_title']."</h2>";
-                }
-            ?>
+            <?php Display_Categories(); ?>
 
         </main>
 
