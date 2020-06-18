@@ -32,5 +32,5 @@
         }
     }
 
-    $mysqli -> close();
+    //$mysqli -> close();
 ?>

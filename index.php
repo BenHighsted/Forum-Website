@@ -2,6 +2,7 @@
 
 <?php
     include("headers.php");
+    include("connect.php");
 ?>
 
 <html>
@@ -21,7 +22,7 @@
             <?php
                 if ($_SESSION['logged-in']) {
                     $username = $_SESSION['username'];
-                    echo "<p> Welcome $username! </p>";
+                    echo "<p> Welcome $username! This forum is a personal project by Ben Highsted.</p>";
                 } else {
             ?>
                     <p><a href="login-form.php">Login</a></p>
@@ -37,14 +38,20 @@
                     </form>
 
             <?php 
-                    if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['logout'])){
+                    if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['logout'])) {
                         $_SESSION['logged-in'] = false; 
                         header("Location: index.php"); 
                     }
-            ?>
-            <?php
                 }
             ?>
+
+            <?php
+                $select = mysqli_query($mysqli, "SELECT * FROM categories");
+                while($row = mysqli_fetch_assoc($select)) {
+                    echo "<h2>".$row['category_title']."</h2>";
+                }
+            ?>
+
         </main>
 
         <footer> 
